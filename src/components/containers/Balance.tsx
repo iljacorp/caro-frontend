@@ -1,14 +1,15 @@
-const MOCKED_BALANCE = [
+import { Currency } from '@/interfaces';
+
+const MOCKED_BALANCE: Currency[] = [
   { name: 'ETH', amount: 2.5 },
   { name: 'LINK', amount: 101 },
   { name: 'USDT', amount: 1000 },
 ];
 
-const CurrencyDisplay = (props: { currency: string; amount: number }) => {
-  const { currency, amount } = props;
+const CurrencyDisplay = ({ name, amount }: Currency) => {
   return (
     <p className='text-lg text-secondary-text'>
-      {currency}: <span className='font-bold'>{amount}</span>
+      {name}: <span className='font-bold'>{amount}</span>
     </p>
   );
 };
@@ -16,13 +17,11 @@ const CurrencyDisplay = (props: { currency: string; amount: number }) => {
 function Balance() {
   return (
     <div>
-      <h2 className='text-2xl font-semibold mb-4 text-primary-text'>
-        Your Balance
-      </h2>
+      <h2 className='text-2xl font-semibold mb-4'>Your Balance</h2>
       {MOCKED_BALANCE.map((currency) => (
         <CurrencyDisplay
           key={currency.name}
-          currency={currency.name}
+          name={currency.name}
           amount={currency.amount}
         />
       ))}
