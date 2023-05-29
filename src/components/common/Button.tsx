@@ -1,8 +1,7 @@
-import { MouseEventHandler } from 'react';
+import { MouseEventHandler, PropsWithChildren } from 'react';
 
 type ButtonProps = {
   onClick: MouseEventHandler<HTMLButtonElement>;
-  children: string;
   secondary?: boolean;
   small?: boolean;
 };
@@ -14,7 +13,12 @@ const BUTTON_STYLES = {
   medium: 'py-2 px-4 font-semibold',
 };
 
-function Button({ onClick, children, secondary, small }: ButtonProps) {
+function Button({
+  onClick,
+  children,
+  secondary,
+  small,
+}: PropsWithChildren<ButtonProps>) {
   const styleClasses = secondary
     ? BUTTON_STYLES.secondary
     : BUTTON_STYLES.primary;
