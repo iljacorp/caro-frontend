@@ -4,6 +4,7 @@ type ButtonProps = {
   onClick: MouseEventHandler<HTMLButtonElement>;
   secondary?: boolean;
   small?: boolean;
+  className?: string;
 };
 
 const BUTTON_STYLES = {
@@ -18,6 +19,7 @@ function Button({
   children,
   secondary,
   small,
+  className,
 }: PropsWithChildren<ButtonProps>) {
   const styleClasses = secondary
     ? BUTTON_STYLES.secondary
@@ -27,7 +29,7 @@ function Button({
   return (
     <button
       onClick={onClick}
-      className={`rounded ${styleClasses} ${sizeClasses}`}
+      className={`rounded ${styleClasses} ${sizeClasses} ${className}`}
     >
       {children}
     </button>

@@ -1,6 +1,6 @@
 function About() {
   return (
-    <div className='w-3/5 mt-56'>
+    <div className='w-3/5 max-w-3xl mt-56'>
       <h1 className='text-7xl font-semibold'>About</h1>
       <p className='mt-5'>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dolor mi,

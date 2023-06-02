@@ -1,6 +1,7 @@
 import { Bot } from '@/interfaces';
 import { MouseEventHandler, PropsWithChildren, useState } from 'react';
 import Image from 'next/image';
+import Button from '../common/Button';
 
 const MOCKED_BOT_LIST: Bot[] = [
   {
@@ -42,13 +43,33 @@ const TableData = ({ children }: PropsWithChildren) => (
   <td className='px-4 py-1'>{children}</td>
 );
 
+//rudimentary confirmation
+const confirmSubscription = () => {
+  const response = confirm('Are you sure you want to subscribe?');
+
+  if (response) {
+    alert('You have subscribed!');
+  } else {
+    console.log('Cancel was pressed');
+  }
+};
+
 function BotsTable() {
   const [sortedBots, setSortedBots] = useState(MOCKED_BOT_LIST);
+  const [sortedBy, setSortedBy] = useState<'performance' | 'rating' | ''>('');
+  const [isAscending, setIsAscending] = useState(true);
 
   const handleSort = (value: 'performance' | 'rating') => {
-    value;
-    const sorted = [...sortedBots].sort((a, b) => b[value] - a[value]);
-    setSortedBots(sorted);
+    if (sortedBy === value) {
+      setIsAscending(!isAscending);
+      setSortedBots((prev) => [...prev].reverse());
+    } else {
+      setIsAscending(true);
+      setSortedBy(value);
+
+      const sorted = [...sortedBots].sort((a, b) => b[value] - a[value]);
+      setSortedBots(sorted);
+    }
   };
 
   return (
@@ -89,6 +110,9 @@ function BotsTable() {
               <TableData>{bot.performance}%</TableData>
               <TableData>{bot.rating}</TableData>
               <TableData>{bot.description}</TableData>
+              <TableData>
+                <Button onClick={confirmSubscription}>Subscribe</Button>
+              </TableData>
             </tr>
           ))}
         </tbody>
@@ -98,5 +122,3 @@ function BotsTable() {
 }
 
 export default BotsTable;
-
-//TODO: descending sort
