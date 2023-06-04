@@ -1,14 +1,19 @@
+type Tokens = 'ETH' | 'LINK' | 'DOGE' | 'USDT';
+
 export interface Currency {
   // TODO: add more currencies
-  name: 'ETH' | 'LINK' | 'DOGE' | 'USDT';
-  amount?: number;
+  name: Tokens;
+  amount: number;
   symbol?: string;
 }
 
-//TODO: Wallet interface
+export interface Wallet {
+  address: string;
+  balance: Currency[];
+}
 
 export interface Signal {
-  currency: Currency;
+  name: Tokens;
   amount: number;
 }
 

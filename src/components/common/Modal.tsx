@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react';
-import ReactModal from 'react-modal';
+import ReactModal, { Styles } from 'react-modal';
 
 type ModalTypes = {
   isOpen: boolean;
@@ -8,7 +8,7 @@ type ModalTypes = {
 
 ReactModal.setAppElement('#__next');
 
-const customStyles = {
+const customStyles: Styles = {
   content: {
     top: '50%',
     left: '50%',
@@ -16,7 +16,12 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
-    padding: '200px',
+    padding: 20,
+    width: '90%',
+    maxWidth: 512,
+    display: 'flex',
+    flexDirection: 'column',
+    border: '1px solid #ddd',
   },
 };
 
@@ -32,7 +37,7 @@ function Modal({
       style={customStyles}
     >
       <button
-        className='absolute top-0 right-0 m-5 text-9xl font-bold leading-none cursor-pointer'
+        className='absolute top-0 right-0 m-5 text-2xl font-bold leading-none cursor-pointer text-red-500'
         onClick={closeModal}
       >
         &#x2715;

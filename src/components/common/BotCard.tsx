@@ -17,9 +17,13 @@ function BotCard({
         </div>
       )}
       <div className='flex flex-col flex-1'>
-        <div className='flex flex-row justify-between'>
-          <p className='text-xl text-'>{name}</p>
-          <p>{'⭐️'.repeat(rating)}</p>
+        <div className='flex flex-row'>
+          <p className='text-xl'>
+            {name}
+            <span className='text-yellow-400 text-base'>{` ${'★'.repeat(
+              rating
+            )}${'☆'.repeat(5 - rating)}`}</span>
+          </p>
         </div>
         <p className=''>{description}</p>
       </div>

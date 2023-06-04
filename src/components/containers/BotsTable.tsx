@@ -1,34 +1,13 @@
 import { Bot } from '@/interfaces';
-import { MouseEventHandler, PropsWithChildren, useState } from 'react';
+import {
+  MouseEventHandler,
+  PropsWithChildren,
+  useEffect,
+  useState,
+} from 'react';
 import Image from 'next/image';
 import Button from '../common/Button';
-
-const MOCKED_BOT_LIST: Bot[] = [
-  {
-    name: 'Stockfish',
-    imgUrl: 'https://via.placeholder.com/150',
-    performance: 15,
-    rating: 4,
-    signals: [],
-    description: 'Lorem upsum dolor sit amet consectetur adipisicing elit.',
-  },
-  {
-    name: 'Nanobot',
-    imgUrl: 'https://via.placeholder.com/150',
-    performance: -4,
-    rating: 3,
-    signals: [],
-    description: 'Lorem upsum dolor sit amet consectetur adipisicing elit.',
-  },
-  {
-    name: 'Hypesignals',
-    imgUrl: 'https://via.placeholder.com/150',
-    performance: 22,
-    rating: 4,
-    signals: [],
-    description: 'Lorem upsum dolor sit amet consectetur adipisicing elit.',
-  },
-];
+import { useBots } from '@/context/BotsProvider';
 
 const TableHeader = ({
   children,
@@ -55,9 +34,16 @@ const confirmSubscription = () => {
 };
 
 function BotsTable() {
-  const [sortedBots, setSortedBots] = useState(MOCKED_BOT_LIST);
+  const [bots] = useBots();
+  const [sortedBots, setSortedBots] = useState(bots);
   const [sortedBy, setSortedBy] = useState<'performance' | 'rating' | ''>('');
   const [isAscending, setIsAscending] = useState(true);
+
+  useEffect(() => {
+    setSortedBots(bots);
+    setSortedBy('');
+    setIsAscending(true);
+  }, [bots]);
 
   const handleSort = (value: 'performance' | 'rating') => {
     if (sortedBy === value) {
@@ -108,7 +94,11 @@ function BotsTable() {
               </TableData>
               <TableData>{bot.name}</TableData>
               <TableData>{bot.performance}%</TableData>
-              <TableData>{bot.rating}</TableData>
+              <TableData>
+                <p className='text-yellow-400'>{`${'★'.repeat(
+                  bot.rating
+                )}${'☆'.repeat(5 - bot.rating)}`}</p>
+              </TableData>
               <TableData>{bot.description}</TableData>
               <TableData>
                 <Button onClick={confirmSubscription}>Subscribe</Button>
