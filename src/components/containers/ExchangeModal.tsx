@@ -46,13 +46,12 @@ function ExchangeModal({ isOpen, closeModal }: ExchangeModalProps) {
   const [wallet] = useWallet();
 
   const acceptTrade = () => {
-    console.log('accepted');
     closeModal();
   };
 
   return (
     <Modal isOpen={isOpen} closeModal={closeModal}>
-      <h2 className='text-3xl text-center font-bold'>Exchange</h2>
+      <h2 className='text-3xl text-center font-bold'>Target allocation</h2>
       <div className='flex flex-1 flex-col justify-between'>
         <div className='flex flex-1 flex-col mt-5 justify-center items-center'>
           <table className='table-auto'>

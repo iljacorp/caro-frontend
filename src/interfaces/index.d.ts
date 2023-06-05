@@ -19,7 +19,6 @@ export interface Signal {
 
 export interface Bot {
   name: string;
-  imgUrl?: string;
   description?: string;
   performance: number;
   rating: number;

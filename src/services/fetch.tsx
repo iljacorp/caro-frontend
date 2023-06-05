@@ -3,7 +3,6 @@ import { Bot, Wallet } from '@/interfaces';
 const MOCKED_BOT_LIST: Bot[] = [
   {
     name: 'Stockfish',
-    imgUrl: 'https://via.placeholder.com/150',
     performance: 15,
     rating: 4,
     signals: [],
@@ -11,7 +10,6 @@ const MOCKED_BOT_LIST: Bot[] = [
   },
   {
     name: 'Nanobot',
-    imgUrl: 'https://via.placeholder.com/150',
     performance: -4,
     rating: 2,
     signals: [],
@@ -19,7 +17,6 @@ const MOCKED_BOT_LIST: Bot[] = [
   },
   {
     name: 'Hypesignals',
-    imgUrl: 'https://via.placeholder.com/150',
     performance: 22,
     rating: 5,
     signals: [],

@@ -13,8 +13,6 @@ function Balance() {
   const [wallet] = useWallet();
   const { balance } = wallet;
 
-  console.log(balance);
-
   return (
     <div>
       <h2 className='text-2xl font-semibold mb-4'>Your Balance</h2>

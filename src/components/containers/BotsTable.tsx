@@ -67,7 +67,6 @@ function BotsTable() {
       <table className='table-auto w-full'>
         <thead>
           <tr>
-            <TableHeader>Image</TableHeader>
             <TableHeader>Name</TableHeader>
             <TableHeader onClick={() => handleSort('performance')}>
               Performance
@@ -81,17 +80,6 @@ function BotsTable() {
         <tbody>
           {sortedBots.map((bot, index) => (
             <tr key={index} className={index % 2 === 0 ? 'bg-gray-100' : ''}>
-              <TableData>
-                {bot.imgUrl && (
-                  <Image
-                    src={bot.imgUrl}
-                    alt={bot.name}
-                    width={75}
-                    height={75}
-                    className='rounded'
-                  />
-                )}
-              </TableData>
               <TableData>{bot.name}</TableData>
               <TableData>{bot.performance}%</TableData>
               <TableData>
