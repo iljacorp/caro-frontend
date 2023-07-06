@@ -69,4 +69,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 The goal is to establish a standard for third parties to make their bots parameterizable, thereby providing users with a wider range of options and more control over their investment strategies. This feature, along with the ongoing enhancement of the platform's performance metrics and ranking system, will continue to be developed in future iterations of the project.
 
 ## 📜 License
-This project is licensed under the MIT License - see the LICENSE.md file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
